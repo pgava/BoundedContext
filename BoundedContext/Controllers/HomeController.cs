@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Artist.Data;
 using Microsoft.AspNetCore.Mvc;
 using BoundedContext.Models;
 
@@ -10,6 +11,12 @@ namespace BoundedContext.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ArtistContext _context;
+
+        public HomeController(ArtistContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();

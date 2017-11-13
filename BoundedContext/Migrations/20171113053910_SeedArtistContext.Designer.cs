@@ -11,9 +11,10 @@ using System;
 namespace BoundedContext.Migrations
 {
     [DbContext(typeof(ArtistContext))]
-    partial class ArtistContextModelSnapshot : ModelSnapshot
+    [Migration("20171113053910_SeedArtistContext")]
+    partial class SeedArtistContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,20 +45,6 @@ namespace BoundedContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ArtistMembers");
-                });
-
-            modelBuilder.Entity("Artist.Domain.Music", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("ArtistId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Musics");
                 });
 #pragma warning restore 612, 618
         }

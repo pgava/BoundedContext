@@ -28,3 +28,7 @@ E.g. options.UseSqlServer(connection, b => b.MigrationsAssembly("BoundedContext"
 By default, the migrations assembly is the assembly containing the DbContext.
 Change your target project to the migrations project by using the Package Manager Console's 
 Default project drop-down list, or by executing "dotnet ef" from the directory containing the migrations project.
+
+Tutorial
+--------
+https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro

@@ -6,6 +6,7 @@ namespace Artist.Data
     {
         public DbSet<Domain.Artist> Artists { get; set; }
         public DbSet<Domain.ArtistMember> ArtistMembers { get; set; }
+        public DbSet<Domain.Music> Musics { get; set; }
 
         public ArtistContext(DbContextOptions<ArtistContext> options) : base(options)
         {
