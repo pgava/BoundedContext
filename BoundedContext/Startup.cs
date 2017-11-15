@@ -22,6 +22,11 @@ namespace BoundedContext
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<Artist.Data.ArtistContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("BoundedContext")));
+            services.AddDbContext<Artist.Data.UserReferenceContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("BoundedContext")));
+            services.AddDbContext<User.Data.UserContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("BoundedContext")));
+
+            services.AddScoped<Artist.Data.IArtistManagementData, Artist.Data.ArtistManagementData>();
+            services.AddScoped<Artist.Service.IArtistService, Artist.Service.ArtistService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

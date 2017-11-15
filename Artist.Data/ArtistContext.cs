@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BC.Sharedkernel.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Artist.Data
 {
@@ -22,7 +23,10 @@ namespace Artist.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.HasDefaultSchema("ShoppingCart");     
+            //modelBuilder.HasDefaultSchema("Artist");            
+            modelBuilder.Entity<Domain.Artist>().Ignore(p => p.State);
+
+            //modelBuilder.Types<IStateObject>().Configure(c => c.Ignore(p => p.State));
         }
 
     }

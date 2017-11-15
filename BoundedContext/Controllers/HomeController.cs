@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Artist.Data;
+using Artist.Service;
 using Microsoft.AspNetCore.Mvc;
 using BoundedContext.Models;
 
@@ -11,15 +9,18 @@ namespace BoundedContext.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ArtistContext _context;
+        private readonly ArtistContext _artistContext;
+        private readonly IArtistService _artistService;
 
-        public HomeController(ArtistContext context)
+        public HomeController(ArtistContext artistContext, IArtistService artistService)
         {
-            _context = context;
+            _artistContext = artistContext;
+            _artistService = artistService;
         }
         public IActionResult Index()
         {
-            return View();
+            var res = _artistService.SomeUsefulMethod(Guid.Parse("F44FC5FC-909C-4B86-9E4F-05D6BB8E604A"));
+            return View(_artistContext.Artists);
         }
 
         public IActionResult About()
