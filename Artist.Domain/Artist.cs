@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BC.Sharedkernel.Enums;
 using BC.Sharedkernel.Interfaces;
 
@@ -9,12 +10,14 @@ namespace Artist.Domain
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public ObjectState State { get; private set; }
+        public List<Music> Musics { get; private set; }
 
         private Artist()
         {
+            Musics = new List<Music>();
         }
 
-        private Artist(Guid id, string name)
+        private Artist(Guid id, string name) : this()
         {
             Id = id;
             Name = name;
@@ -33,6 +36,11 @@ namespace Artist.Domain
                 Name = name;
                 State = ObjectState.Modified;
             }
+        }
+
+        public void AddMusic(string name)
+        {
+            Musics.Add(Music.Create(name, Id));
         }
     }
 }

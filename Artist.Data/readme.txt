@@ -14,7 +14,8 @@ To enable dotnet ef
 	
 	to the <ItemGroup> of the project
 
-3. Then: dotnet ef migrations add <name of migration>
+3. dotnet ef migrations add <name of migration>
+4. dotnet ef database update
 
 If you use separate projects for the DbContext you can run into issues when creating the migrations:
 
@@ -50,3 +51,9 @@ You have to use different context if you use separate dtabase schemas. Also usin
 Tutorial
 --------
 https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro
+
+Test
+----
+to create a test project:
+1. create the folder
+2. dotnet new xu

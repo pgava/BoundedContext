@@ -16,6 +16,7 @@ namespace Artist.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             //optionsBuilder.UseSqlServer(@"Server=202.164.59.44,5143;uid=sa; password=Raj@igniva;Database=ZimriiNew;");
 
             base.OnConfiguring(optionsBuilder);
@@ -23,8 +24,15 @@ namespace Artist.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.HasDefaultSchema("Artist");            
-            modelBuilder.Entity<Domain.Artist>().Ignore(p => p.State);
+            //modelBuilder.HasDefaultSchema("Artist");      
+
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+
+                modelBuilder.Entity(entity.Name).Ignore("State");
+            }
+
+            //modelBuilder.Entity<Domain.Artist>().Ignore(p => p.State);
 
             //modelBuilder.Types<IStateObject>().Configure(c => c.Ignore(p => p.State));
         }

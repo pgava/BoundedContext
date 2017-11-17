@@ -17,7 +17,7 @@ namespace BoundedContext.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
+                .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Artist.Domain.Artist", b =>
@@ -57,7 +57,17 @@ namespace BoundedContext.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ArtistId");
+
                     b.ToTable("Musics");
+                });
+
+            modelBuilder.Entity("Artist.Domain.Music", b =>
+                {
+                    b.HasOne("Artist.Domain.Artist")
+                        .WithMany("Musics")
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

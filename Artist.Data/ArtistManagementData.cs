@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using BC.Sharedkernel.Data;
 
 namespace Artist.Data
 {
@@ -17,6 +18,13 @@ namespace Artist.Data
         public bool HasUser(Guid id)
         {
             return _userReferenceContext.Users.Any(u => u.Id == id);
+        }
+
+        public void Update(Domain.Artist artist)
+        {
+            _artistContext.ChangeTracker.TrackGraph(artist, ChangeTrackerHelpers.ConvertStateOfNode);
+            //_artistContext.FixState();
+            _artistContext.SaveChanges();
         }
     }
 }

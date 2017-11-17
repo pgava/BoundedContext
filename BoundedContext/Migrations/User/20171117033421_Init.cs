@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BoundedContext.Migrations.User
 {
-    public partial class AddUser : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,9 +12,9 @@ namespace BoundedContext.Migrations.User
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tfn = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Tfn = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
