@@ -23,7 +23,6 @@ namespace Artist.Data
         public void Update(Domain.Artist artist)
         {
             _artistContext.ChangeTracker.TrackGraph(artist, ChangeTrackerHelpers.ConvertStateOfNode);
-            //_artistContext.FixState();
             _artistContext.SaveChanges();
         }
     }

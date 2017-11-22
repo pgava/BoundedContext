@@ -56,4 +56,7 @@ Test
 ----
 to create a test project:
 1. create the folder
-2. dotnet new xu
+2. dotnet new xunit
+
+The official MySql provider doesn't support .net core 2. Use this instead:
+https://docs.microsoft.com/en-us/ef/core/providers/pomelo/
